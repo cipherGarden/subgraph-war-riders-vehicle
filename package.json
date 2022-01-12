@@ -1,0 +1,16 @@
+{
+  "name": "war-riders-vehicle",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ war-riders-vehicle",
+    "create-local": "graph create --node http://localhost:8020/ war-riders-vehicle",
+    "remove-local": "graph remove --node http://localhost:8020/ war-riders-vehicle",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 war-riders-vehicle"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.22.3",
+    "@graphprotocol/graph-ts": "0.22.1"
+  }
+}

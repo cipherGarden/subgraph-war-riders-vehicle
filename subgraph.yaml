@@ -1,0 +1,40 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: WarRiders
+    network: mainnet
+    source:
+      address: "0x5CAeBd3b32e210E85CE3E9d51638B9C445481567"
+      abi: WarRiders
+      startBlock: 8481230
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipRenounced
+        - OwnershipTransferred
+        - Transfer
+        - Approval
+        - ApprovalForAll
+        - Mint
+      abis:
+        - name: WarRiders
+          file: ./abis/WarRiders.json
+      eventHandlers:
+        - event: OwnershipRenounced(indexed address)
+          handler: handleOwnershipRenounced
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+      callHandlers:
+        - function: mint(uint256,string,uint256,uint256,address)
+          handler: handleMint
+      file: ./src/mapping.ts

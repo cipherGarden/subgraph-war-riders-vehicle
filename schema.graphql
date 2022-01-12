@@ -1,0 +1,15 @@
+type Mint @entity {
+  id: ID!
+  # account: [Account]!
+  to: Bytes! # address
+  tokenID: BigInt! # uint256
+}
+
+type Vehicle @entity {
+  id: ID!
+  tokenID: BigInt! # uint256
+  tankSize: BigInt! # uint256
+  type: BigInt! #uint
+  #metadata
+  #carType
+}
